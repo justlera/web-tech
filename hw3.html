@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <style>
+      html {
+        font-size: 18px;
+      }
+      li {
+        font-size: 0.8rem;
+      }
+      ul > li{
+        color: darkred;
+      }
+      h1 ~ h4{
+        font-style: italic;
+      }
+      .highlight {
+        background-color: red;
+        font-size: 1.4cm;
+        line-height: 40%;
+        display: grid;
+        place-items: center;
+      }
+      p {
+        color: darkblue;
+      }
+      #id1 {
+        color: white;
+      }
+      a:link {
+        color: black;
+        background: red; 
+        display: block;
+      }
+      a:hover {
+        color: blue;
+      }
+      a:visited {
+        color: #003B4A;
+      }
+      a + p {
+        color: darkorange;
+      }
+      blockquote {
+        background: #003B4A;
+        border-left: 2px solid red;
+        padding: 1em;
+      }
+      blockquote::before,
+      blockquote::after {
+        content: "“";
+        font-size: 40px; /* Размер текста кавычек */
+        color: #FF1000;
+        line-height: 0;
+      }
+      blockquote::after {
+        content: "”";
+      }
+      div {
+        display: inline;
+        font-size:1.5em
+      }
+      .pstn{
+        --param1: -1;
+        --param2: 1;
+        position: relative;
+      }
+      p {
+        color: #003B4A;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>Это третья домашка</title>
+  </head>
+  <body>
+    <h1 class="highlight">Дорогой дневник!</h1>
+    <p> Мне не передать ту боль и унижение... </p>
+    <ul>
+      <li> Которые
+        <ul> 
+          <li> Я испытыла
+            <ul>
+              <li> На контрольной
+                <ul>
+                  <li> По мат. анализу
+                    <ul>
+                      <li> В первом семестре (это был rem)
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div>
+    В жизни надо быть упёртым...
+    <div>но не бараном (а это был em) </div>
+    </div> <br>
+    <blockquote id="id1">Если жить, то красиво. Если взгляд, то четкий. Если надеяться, то только на себя. Если любить, то всем сердцем.</blockquote>
+    <a href="https://best-quote.ru/pacanskie-citaty-pro-zhizn/">Еще больше пацанских цитат по ссылке...</a>
+    <p>Спонсор: Джейсон Стэтхем </p>
+    <h4 style = "height: 3em;"> Тест на дурака! (а еще и демонстрация em не для font-size)</h4>
+    <p style="display: none;"> Если вы видите эту строку, то обратитесь к психиатру </p>
+    <p style="width: 4em"> Ну как, проверились? </p>
+    <p class="pstn" style ="left: calc(30px*var(--param1));">Switchin' the positions for you (relative)</p>
+    <p class="pstn" style ="left: calc(30px*var(--param2));">Switchin' the positions for you (relative)</p>
+    <p style="position: fixed; bottom: 30px; right: 30px;"> Switchin' the positions for you (fixed) </p>
+    <p style="position: static"> Switchin' the positions for you (static)</p>
+    <p style="position: absolute; top: 1000px; right: 120px"> Switchin' the positions for you (absolute)</p>
+    <p style="font-style: italic; color: red"> P.S. Все строчки с тэгом "p" могли быть ужасного желтого цвета, но принцип каскада в css спас нас от боли в глазах.</p>
+  </body>
+</html>
