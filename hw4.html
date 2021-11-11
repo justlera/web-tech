@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Это 4-ая домашка</title>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+  </head>
+  <body>
+    <p> На этой страничке в этот раз пусто. Пацанские цитаты покинули чат.</p>
+    <script type="text/javascript">
+      
+      globalThis["Global"] = "Avada Kedavra";
+      //#1
+      function pow(n, p){
+        let res = 1;
+        if (p === 0){
+          return res;
+        }
+        else {
+          for (let i = 1; i <= p; i++)
+            res = res*n ;
+          return res;
+        }
+      }
+      console.log("Возведем 5 во 2 степень: %d", pow(5, 2));
+
+      //#2
+      {
+        var a = 666;
+        let b = "666";
+
+        console.log("Переменные var, let внутри своего блока: %d %s", a, b);
+      }
+      console.log("Переменная var вне своего блока: %d", a);
+      try{
+        console.log("Переменная let вне своего блока: %s", b);
+      }
+      catch(error){
+        console.log("Вышла ошибка в пред. случае", error.name);
+      }
+      //#3
+      {
+        let a = 13;
+        let b = "13";
+        console.log("a == b - %s". a == b);
+        console.log("a === b - %s". a === b);
+      }
+      //#4
+      {
+        let array = [1, 2, 3];
+        console.log("type of 7 - %s", typeof(7));
+        console.log("type of 'blablabla' - %s", typeof("blablabla"));
+        console.log("type of true - %s", typeof(true));
+        console.log("type of pow - %s", typeof(pow));
+        console.log("type of f - %s", typeof(f));
+        console.log("type of array - %s", typeof(array));
+      }
+      //#5
+      {
+        let array = [1, 4, 9, 16, 25];
+        for (let i = 1; i <= 5, i++){
+          for (let j of array){
+            console.log("square root of %d is %d", i, j);
+          }
+        }
+      }
+      //#6
+      {
+        console.log("The most important magic spell is %s", global);
+        delete global;
+        console.log("Но это запрещенное заклинание, поэтому уберем его от греха подальше, теперь у нас осталось только воспоминание - %s", typeof(global));
+      }
+      //#7
+      {
+        let minus = (a,b) => a - b;
+        console.log("%d - %d = %d", 7, 5, minus(7,5));
+      }
+      //#8
+      {
+        var arr = ["a", "b", "c"];
+        var [one, two, three] = arr;
+
+        console.log("one - %s", one);
+        console.log("two - %s", two);
+        console.log("three - %s", three);
+
+        [one, two, three] = [two, three, one]
+
+        console.log("one - %s", one);
+        console.log("two - %s", two);
+        console.log("three - %s", three);
+      }
+      //#9
+      {
+        console.log("Десятичный логарифм числа 10 000 - %d"б Math.log(10000, 10));
+      }
+    </script>
+  </body>
+</html>
