@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Это 5-ая домашка</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    {
+      class Phone {
+        constructor(name) {
+          this.name = name;
+        }
+        design(color){
+          this.color = color;
+          console.log("Цвет телефона ", this.color);
+        }
+      }
+
+      class Model extends Phone {
+        model(mod) {
+          this.mod = mod;
+        }
+        print() {
+          console.log(this.name() + ' модель № ' + this.mod);
+        }
+      }
+
+      let myphone = new Model("iPhone");
+      myphone.mod(12);
+      myphone.design("белый");
+    }
+
+
+    {
+      let animal = {
+        eats: true,
+        walk() {
+          alert("Animal walk");
+        }
+      };
+
+      let wolf = {
+        jumps: true,
+        __proto__: animal
+      };
+      wolf.walk();
+    }
+    
+    {
+      class screen{
+        constructor(width, length){
+          this.width = width;
+          this.length = length;
+        }
+      }
+
+      class Samsung extends screen{
+        constructor(width, length, weight){
+          super(width, length);
+          this.weight = weight;
+        }
+      }
+
+      let s = new Samsung(50, 30, 228);
+      console.log(s);
+    }
+
+    //4
+    {
+      let monitor = {w: 100, l: 50};
+      Object.defineProperty(monitor, "h", {
+        enumerable: false;
+        value: 40;
+      });
+
+      console.log(monitor.h);
+      for (let i in monitor){
+        console.log(i);
+      }
+
+      Object.defineProperty(monitor, "g", {
+        set: function(value){
+          this.h = "228";
+          return value;
+        }
+      });
+      console.log(monitor.h);
+      monitor.g = 300;
+      console.log(monitor.h);
+    }
+
+    //5
+    {
+      let male = {
+        name: "Сергей",
+        age: 32
+      };
+
+      let female = {
+        name: "Ангелина",
+        age: 23
+      };
+
+      female.sayHi = function() {
+        alert("Привет!");
+      };
+
+      female.sayHi();
+      male.sayHi();
+    }
+
+    //6
+    {
+      String.prototype.method = function() {
+        console.log('Индекс первого вхождения «a» с начала строки равен ' + str.indexOf('a'));
+      }
+
+      let str = "abracadabra";
+      str.method();
+
+    }
+
+  </body>
+  </html>
