@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Это 6-ая домашка</title>
+    <style>
+      .button_style{
+        background-color: orange;
+        color: white;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <p> Элемент тэга p </p>
+    <div class="images" id="parent">
+      <a href="https://ibb.co/b2mfWw7"><img src="https://i.ibb.co/8dshKvX/Falling-Stars-Canvas-Print-by-Paula-Belle-Flores-i-Canvas.jpg" alt="Falling-Stars-Canvas-Print-by-Paula-Belle-Flores-i-Canvas" border="0" /></a>
+      <a href="https://ibb.co/gR63Pd4"><img src="https://i.ibb.co/XCVb3DY/VC6-OKOFVRZAN7-GUN4-KUEHAAOMU.jpg" alt="VC6-OKOFVRZAN7-GUN4-KUEHAAOMU" border="0" /></a>
+    </div>
+
+    <h3>Список продуктов</h3>
+    <ul id="products">
+      <li>Хлеб</li>
+      <li id="milk">Молоко</li>
+      <li id="cheese">Сыр</li>
+    </ul>
+
+    <button onclick="click">Нажми на меня</button>
+    <div id="this_div">Элемент тэга div</div>
+
+    <input type="text" id="message">
+
+    <a id="not_active" href="https://yandex.ru"> Не работает </a>
+
+    <span> Текст </span>
+    <button> Кнопка </button>
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+      //Общая часть
+      {
+        //Создаем элемент
+        const $elem = document.createElement('p');
+        elem.textContent = "Привет мир";
+        let elem = document.body;
+        elem.appendChild($elem);
+
+        //Удаляем элемент
+        elem.removeChild($elem);
+
+        //Навигация и работа с тэгами
+        $('div.images').find('img').each(function(index, elem) 
+        {
+          console.log("Потомок: " + elem.tagName + " " + elem.src);
+        });
+
+        var descCount = $('div.images').find('img').each(function(index, elem) 
+        {
+          console.log("Потомок: " + elem.tagName + " " + elem.src);    
+        }).length;
+        console.log("Всего имеется " + descCount + " элементов-потомков img");
+
+        //Arguments
+        function f(one, two, three) {
+          console.log(arguments[0]);
+          console.log(arguments[1]);
+          console.log(arguments[2]);
+        }
+        func1(1, 2, 3);
+      }
+    //Индивидуальная часть
+    {
+      //1. Первый потомок
+      {
+        ul.firstElementChild.style.background = ‘red’;
+      }
+
+      //2. Первый узел
+      {
+        console.log(document.body.childNodes[document.body.childNodes.firstChild]);
+      }
+      
+      //3. Соседний узел
+      {
+        const milk = ul.children[1];
+        milk.nextElementSibling.style.background = ‘orange’;
+      }
+
+      //4. Вставка перед элементов
+      {
+        let parent = document.querySelector('#parent');
+        let p = document.createElement('p');
+        p.innerHTML = 'Картиночки';
+        parent.insertBefore(p, parent.firstElementChild);
+      }
+
+      //5. Поиск элемента по селектору
+      {
+        let elem = document.getElementById('milk');
+        elem.style.background = 'green';
+      }
+
+      //6. Переключение класса
+      {
+        function click() {
+         var element = document.getElementById("this_div");
+         element.classList.toggle("button_style");
+        }
+      }
+
+      //7. Клавиатура (показывает, какую кнопку ты нажал)
+      {
+        let textBox = document.getElementById('message');
+        textBox.addEventListener('keydown', (event) => {
+            console.log(`key=${event.key}`);
+
+        });
+      }
+      //8. Add Event (будет реализовано в пункте 9)
+
+      //9. Attribute event (add/remove)
+      {
+        function modifyText(new_text) {
+        var cheese = document.getElementById("cheese");
+        cheese.firstChild.nodeValue = new_text;
+        }
+
+        el = document.getElementById("products");
+        el.addEventListener("click", function(){modifyText("шоколад")}, false);
+        el.removeEventListener("click", function(){modifyText("шоколад")}, false);
+      }
+
+      //10. target (кликаешь на область и получаешь название тэга)
+      {
+        function targ(event){
+          document.getElementById("demo").innerHTML = event.target.tagName
+        }
+      }
+      //11. Active/passive event
+
+      {
+
+      }
+
+      //12. Предотвращение стандартного действия
+      {
+        let href = document.getElementById("not_active");
+        href.addEventListener("click", function(event) {
+          event.preventDefault();
+        }, false);
+      }
+
+
+    }
+  </body>
+</html>
