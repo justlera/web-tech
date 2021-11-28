@@ -49,16 +49,11 @@
         elem.removeChild($elem);
 
         //Навигация и работа с тэгами
-        $('div.images').find('img').each(function(index, elem) 
-        {
-          console.log("Потомок: " + elem.tagName + " " + elem.src);
-        });
-
-        var descCount = $('div.images').find('img').each(function(index, elem) 
-        {
-          console.log("Потомок: " + elem.tagName + " " + elem.src);    
-        }).length;
-        console.log("Всего имеется " + descCount + " элементов-потомков img");
+        let el = document.body.childNodes.length;
+        for (let i = 0, i < 1, i++){
+          console.log("Дочерний элемент: %s", document.body.childNodes[i]);
+          console.log("Его атрибуты: %s"document.body.childNodes[i].attributes);
+        }
 
         //Arguments
         function f(one, two, three) {
@@ -72,12 +67,13 @@
     {
       //1. Первый потомок
       {
+        const ul = document.getElementsByTagName('ul')[0];
         ul.firstElementChild.style.background = ‘red’;
       }
 
       //2. Первый узел
       {
-        console.log(document.body.childNodes[document.body.childNodes.firstChild]);
+        console.log(document.body.childNodes[document.body.childNodes.[0]]);
       }
       
       //3. Соседний узел
@@ -96,7 +92,7 @@
 
       //5. Поиск элемента по селектору
       {
-        let elem = document.getElementById('milk');
+        let elem = document.querySelector('h3');
         elem.style.background = 'green';
       }
 
@@ -116,13 +112,19 @@
 
         });
       }
-      //8. Add Event (будет реализовано в пункте 9)
+      //8. Add Event 
+      {
+        element.addEventListener("click", func, false);
+        function func() {
+          alert("Спасибо!");
+        }
+      }
 
       //9. Attribute event (add/remove)
       {
         function modifyText(new_text) {
-        var cheese = document.getElementById("cheese");
-        cheese.firstChild.nodeValue = new_text;
+          var cheese = document.getElementById("cheese");
+          cheese.firstChild.nodeValue = new_text;
         }
 
         el = document.getElementById("products");
@@ -139,6 +141,25 @@
       //11. Active/passive event
 
       {
+        document.addEventListener('touchstart', handler, {passive: true}); //сработает не везде из-за важности поддержки браузером
+
+        var supportsPassive = false;
+
+        try {
+          var opts = Object.defineProperty({}, 'passive', {
+            get: function() {
+            supportsPassive = true;
+            }
+          });
+          window.addEventListener("test", null, opts);
+        } catch (e) {}
+
+        document.addEventListener('touchstart', handler, supportsPassive ? { passive: true } : false);
+
+        document.addEventListener('wheel', handler1, {passive: false});
+
+        function handler() { console.log("touchstart"); }
+        function handler1() { console.log("wheel"); }
 
       }
 
