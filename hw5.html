@@ -43,8 +43,9 @@
 
       let wolf = {
         jumps: true,
-        __proto__: animal
       };
+
+      Object.setPrototypeOf(wolf, animal);
       wolf.walk();
     }
     
