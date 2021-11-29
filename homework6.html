@@ -26,6 +26,7 @@
          <li><a href="#">4</a></li>
       </ul>
     </div>
+    <button id="id2" onclick="event.stop_process()"> Кнопка для последнего пункта </button> 
     <h3>Список продуктов</h3>
     <ul id="products">
       <li>Хлеб</li>
@@ -188,6 +189,13 @@
           p.removeAttribute("style");
         }
 
+      }
+
+      //14
+      {
+        id2.onclick = function(event) {
+          alert("Остановка");
+        }
       }
 
   }
