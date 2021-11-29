@@ -11,7 +11,7 @@
       }
     </style>
   </head>
-  <body>
+  <body onclick="targ(event)">
     <p> Элемент тэга p </p>
     <div class="images" id="parent">
       <a href="https://ibb.co/b2mfWw7"><img src="https://i.ibb.co/8dshKvX/Falling-Stars-Canvas-Print-by-Paula-Belle-Flores-i-Canvas.jpg" alt="Falling-Stars-Canvas-Print-by-Paula-Belle-Flores-i-Canvas" border="0" /></a>
@@ -25,10 +25,10 @@
       <li id="cheese">Сыр</li>
     </ul>
 
-    <button onclick="click">Нажми на меня</button>
+    <button onclick="click" id = "but">Нажми на меня</button>
     <div id="this_div">Элемент тэга div</div>
 
-    <input type="text" id="message">
+    //<input type="text" id="message">
 
     <a id="not_active" href="https://yandex.ru"> Не работает </a>
 
@@ -40,46 +40,43 @@
       //Общая часть
       {
         //Создаем элемент
-        const $elem = document.createElement('p');
+        const elem = document.createElement('p');
         elem.textContent = "Привет мир";
-        let elem = document.body;
-        elem.appendChild($elem);
+        document.body.appendChild(elem);
 
         //Удаляем элемент
-        elem.removeChild($elem);
+        document.body.removeChild(elem);
 
         //Навигация и работа с тэгами
         let el = document.body.childNodes.length;
-        for (let i = 0, i < 1, i++){
+        for (let i = 0; i < el; i++){
           console.log("Дочерний элемент: %s", document.body.childNodes[i]);
-          console.log("Его атрибуты: %s"document.body.childNodes[i].attributes);
+          console.log("Его атрибуты: %s", document.body.childNodes[i].attributes);
         }
 
         //Arguments
-        function f(one, two, three) {
+        function f() {
           console.log(arguments[0]);
           console.log(arguments[1]);
           console.log(arguments[2]);
         }
-        func1(1, 2, 3);
+        f(1, 2, 3);
       }
     //Индивидуальная часть
     {
       //1. Первый потомок
       {
-        const ul = document.getElementsByTagName('ul')[0];
-        ul.firstElementChild.style.background = ‘red’;
+        console.log("Первый потомок", document.body.firstChild);
       }
 
       //2. Первый узел
       {
-        console.log(document.body.childNodes[document.body.childNodes.[0]]);
+        console.log(document.body.childNodes[0]);
       }
       
       //3. Соседний узел
       {
-        const milk = ul.children[1];
-        milk.nextElementSibling.style.background = ‘orange’;
+        console.log(document.getElementById("milk").nextElementSibling);
       }
 
       //4. Вставка перед элементов
@@ -114,6 +111,7 @@
       }
       //8. Add Event 
       {
+        let element = document.getElementById("but");
         element.addEventListener("click", func, false);
         function func() {
           alert("Спасибо!");
@@ -135,8 +133,9 @@
       //10. target (кликаешь на область и получаешь название тэга)
       {
         function targ(event){
-          document.getElementById("demo").innerHTML = event.target.tagName
+          document.getElementById("demo").innerHTML = "ты нажал на " + event.target.tagName;
         }
+
       }
       //11. Active/passive event
 
@@ -171,7 +170,7 @@
         }, false);
       }
 
-
     }
+    </script>
   </body>
 </html>
