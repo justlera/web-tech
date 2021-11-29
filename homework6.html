@@ -11,13 +11,21 @@
       }
     </style>
   </head>
-  <body onclick="targ(event)">
+  <body>
     <p> Элемент тэга p </p>
     <div class="images" id="parent">
       <a href="https://ibb.co/b2mfWw7"><img src="https://i.ibb.co/8dshKvX/Falling-Stars-Canvas-Print-by-Paula-Belle-Flores-i-Canvas.jpg" alt="Falling-Stars-Canvas-Print-by-Paula-Belle-Flores-i-Canvas" border="0" /></a>
       <a href="https://ibb.co/gR63Pd4"><img src="https://i.ibb.co/XCVb3DY/VC6-OKOFVRZAN7-GUN4-KUEHAAOMU.jpg" alt="VC6-OKOFVRZAN7-GUN4-KUEHAAOMU" border="0" /></a>
     </div>
-
+    <div id="d">Нажми, чтобы изменить цвет</div>
+    <div>
+       <ul>
+         <li><a href="#">1</a></li>
+         <li><a href="#">2</a></li>
+         <li><a href="#">3</a></li> 
+         <li><a href="#">4</a></li>
+      </ul>
+    </div>
     <h3>Список продуктов</h3>
     <ul id="products">
       <li>Хлеб</li>
@@ -35,6 +43,13 @@
     <span> Текст </span>
     <button> Кнопка </button>
     <p id="demo"></p>
+
+    <div id="div">
+      <p>Абзац</p>
+    </div>
+    <button onclick = "setAttr()">Set attribute</button>
+    <button onclick = "removeAttr()">Remove attribute</button>
+    <h2>Текст меняет цвет</h2>
 
     <script type="text/javascript">
       //Общая часть
@@ -66,16 +81,18 @@
     {
       //1. Первый потомок
       {
-        console.log("Первый потомок", document.body.firstChild);
+        console.log("Первый потомок", document.body.firstElementChild);
       }
 
       //2. Первый узел
       {
-        console.log(document.body.childNodes[0]);
+        console.log("Первый узел", document.body.firstChild);
+
       }
       
       //3. Соседний узел
       {
+        console.log("Предыдущий узел", document.body.nextSibling);
         console.log(document.getElementById("milk").nextElementSibling);
       }
 
@@ -130,31 +147,19 @@
         el.removeEventListener("click", function(){modifyText("шоколад")}, false);
       }
 
-      //10. target (кликаешь на область и получаешь название тэга)
+      //10. target
       {
-        function targ(event){
-          document.getElementById("demo").innerHTML = "ты нажал на " + event.target.tagName;
-        }
+        document.addEventListener("click", function(e) {
+          if(e.target && e.target.nodeName == "A") {
+            console.log("Та нажал на ", e.target.textContent, " элемент списка");
+          }
+        });
 
       }
       //11. Active/passive event
 
       {
-        document.addEventListener('touchstart', handler, {passive: true}); //сработает не везде из-за важности поддержки браузером
-
-        var supportsPassive = false;
-
-        try {
-          var opts = Object.defineProperty({}, 'passive', {
-            get: function() {
-            supportsPassive = true;
-            }
-          });
-          window.addEventListener("test", null, opts);
-        } catch (e) {}
-
-        document.addEventListener('touchstart', handler, supportsPassive ? { passive: true } : false);
-
+        document.addEventListener('touchstart', handler, {passive: true});
         document.addEventListener('wheel', handler1, {passive: false});
 
         function handler() { console.log("touchstart"); }
@@ -170,7 +175,22 @@
         }, false);
       }
 
-    }
+      //13
+
+      { 
+
+        const p = document.querySelector("h2");
+
+        function setAttr() {
+          p.setAttribute("style", "color:blue"); 
+        }
+        function removeAttr() {
+          p.removeAttribute("style");
+        }
+
+      }
+
+  }
     </script>
   </body>
 </html>
